@@ -68,6 +68,7 @@
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</th>
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Nationality</th>
+                            <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Age</th>
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Budget</th>
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Type</th>
                             <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
@@ -82,6 +83,7 @@
                             <td class="px-4 py-3 text-gray-600">{{ reg.contact_number }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ reg.email }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ reg.nationality }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ reg.age|default:"—" }}</td>
                             <td class="px-4 py-3">
                                 <span class="px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">{{ reg.budget }}</span>
                             </td>
@@ -114,8 +116,9 @@
                 <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
                     <div><span class="font-medium text-gray-800">Contact:</span> {{ reg.contact_number }}</div>
                     <div><span class="font-medium text-gray-800">Nationality:</span> {{ reg.nationality }}</div>
+                    <div><span class="font-medium text-gray-800">Age:</span> {{ reg.age|default:"—" }}</div>
                     <div><span class="font-medium text-gray-800">Type:</span> {{ reg.property_type }}</div>
-                    <div><span class="font-medium text-gray-800">Date:</span> {{ reg.date_of_attending }}</div>
+                    <div class="col-span-2"><span class="font-medium text-gray-800">Date:</span> {{ reg.date_of_attending }}</div>
                     <div class="col-span-2"><span class="font-medium text-gray-800">Time:</span> {{ reg.time_slot }}</div>
                     <div class="col-span-2"><span class="font-medium text-gray-800">Email:</span> {{ reg.email }}</div>
                     {% if reg.reference %}<div class="col-span-2"><span class="font-medium text-gray-800">Ref:</span> {{ reg.reference }}</div>{% endif %}

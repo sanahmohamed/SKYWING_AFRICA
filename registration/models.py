@@ -39,6 +39,8 @@ class Registration(models.Model):
     # Nationality
     nationality = models.CharField(max_length=100, verbose_name='Nationality')
 
+    age = models.IntegerField(verbose_name='Age', null=True, blank=True)
+
     #Budget
     budget = models.CharField(
         max_length=20,

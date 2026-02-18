@@ -6,7 +6,7 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Registration
         fields = [
-            'full_name', 'contact_number', 'email', 'nationality',
+            'full_name', 'contact_number', 'email', 'nationality', 'age',
             'budget', 'property_type', 'date_of_attending', 'time_slot', 'reference'
         ]
         widgets = {
@@ -25,6 +25,12 @@ class RegistrationForm(forms.ModelForm):
             'nationality': forms.TextInput(attrs={
                 'placeholder': 'NATIONALITY',
                 'class': 'w-full border border-gray-300 rounded px-4 py-3 text-sm uppercase tracking-widest text-gray-500 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500',
+            }),
+            'age': forms.NumberInput(attrs={
+                'placeholder': 'Age',
+                'class': 'w-full border border-gray-300 rounded px-4 py-3 text-sm text-gray-500 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500',
+                'min': '18',
+                'max': '120',
             }),
             'budget': forms.RadioSelect(attrs={
                 'class': 'radio-custom',

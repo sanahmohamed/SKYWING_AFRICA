@@ -51,7 +51,8 @@
         #toast { transition: all 0.4s ease; }
         .form-section { border-top: 1px solid #e5e7eb; padding-top: 16px; }
 
-      
+        /* ── MOBILE DRAWER ── */
+        /* Dark overlay behind the drawer */
         #drawer-overlay {
             position: fixed;
             inset: 0;
@@ -66,7 +67,7 @@
             pointer-events: all;
         }
 
-      
+        /* Drawer panel slides in from left */
         #mobile-drawer {
             position: fixed;
             top: 0;
@@ -109,13 +110,18 @@
 </head>
 <body class="bg-white min-h-screen">
 
+    <!-- ═══════════════════════════════════════
+         MOBILE DRAWER (slide from left)
+         Only visible on mobile (md:hidden)
+    ═══════════════════════════════════════ -->
+
     <!-- Dark overlay -->
     <div id="drawer-overlay" class="md:hidden"></div>
 
     <!-- Drawer panel -->
     <div id="mobile-drawer" class="md:hidden">
 
-   
+        <!-- Drawer header: logo + X close button -->
         <div class="relative flex items-center px-4 pt-4 pb-3 border-b border-gray-100" style="min-height:72px;">
             <img src="{% static 'images/skywing_logo.jpg' %}"
                  alt="Skywing Logo"
@@ -124,7 +130,7 @@
             <button id="drawer-close-btn" aria-label="Close menu">&#x2715;</button>
         </div>
 
-        <
+        <!-- Nav links with dividers — NO "Get In Touch" -->
         <nav class="flex flex-col px-0 py-2 flex-1">
             <a href="#" class="block text-gray-900 text-lg font-medium px-6 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">Home</a>
             <a href="#" class="block text-gray-900 text-lg font-medium px-6 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">About</a>
@@ -136,7 +142,9 @@
         </nav>
     </div>
 
-<!-- NAVBAR -->
+    <!-- ═══════════════════════════════════════
+         NAVBAR
+    ═══════════════════════════════════════ -->
     <nav class="sticky top-0 z-50 shadow-xl" style="background-color: #191f39;">
         <div class="px-2 sm:px-4 lg:px-6">
             <div class="flex items-center justify-between h-28">
@@ -203,11 +211,14 @@
 
     <!-- EVENT BANNER -->
     <div class="w-full">
-        <img src="{% static 'images/WEB BANNER.jpg' %}"
+        <img src="{% static 'images/WEBBANNER.jpg' %}"
              alt="Dubai Property Show in Africa - 21st to 22nd March 2026"
              class="w-full h-auto object-cover block">
     </div>
-<!-- MAIN FORM -->
+
+    <!-- ═══════════════════════════════════════
+         MAIN FORM
+    ═══════════════════════════════════════ -->
     <main class="min-h-screen bg-white" id="registration-form">
         <div class="max-w-2xl px-8 py-8">
 
@@ -288,11 +299,23 @@
                         {% if form.nationality.errors %}<p class="field-error">{{ form.nationality.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <!-- 05 Budget -->
+                    <!-- 05 Age -->
+                    <div class="form-section">
+                        <div class="flex items-baseline gap-2 mb-1">
+                            <span class="text-red-500 font-bold text-sm">*</span>
+                            <span class="font-bold text-sm text-gray-500">05</span>
+                            <span class="font-bold text-sm text-gray-500">AGE</span>
+                        </div>
+                        <input type="number" name="age" id="id_age" placeholder="Your Age" value="{{ form.age.value|default:'' }}" min="18" max="120"
+                            class="form-input w-full border border-gray-300 rounded px-3 py-2.5 text-sm text-gray-600 focus:outline-none">
+                        {% if form.age.errors %}<p class="field-error">{{ form.age.errors.0 }}</p>{% endif %}
+                    </div>
+
+                    <!-- 06 Budget -->
                     <div class="form-section">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-red-500 font-bold text-sm">*</span>
-                            <span class="font-bold text-sm text-gray-500">05</span>
+                            <span class="font-bold text-sm text-gray-500">06</span>
                             <span class="font-bold text-sm text-gray-500">BUDGET - $</span>
                         </div>
                         <div class="radio-group space-y-1.5">
@@ -306,7 +329,7 @@
                         {% if form.budget.errors %}<p class="field-error">{{ form.budget.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <!-- 06 Property Type -->
+                    <!-- 07 Property Type -->
                     <div class="form-section">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-red-500 font-bold text-sm">*</span>
@@ -324,7 +347,7 @@
                         {% if form.property_type.errors %}<p class="field-error">{{ form.property_type.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <!-- 07 Date of Attending -->
+                    <!-- 08 Date of Attending -->
                     <div class="form-section">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-red-500 font-bold text-sm">*</span>
@@ -342,7 +365,7 @@
                         {% if form.date_of_attending.errors %}<p class="field-error">{{ form.date_of_attending.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <!-- 08 Time Slot -->
+                    <!-- 09 Time Slot -->
                     <div class="form-section">
                         <div class="flex items-baseline gap-2 mb-2">
                             <span class="text-red-500 font-bold text-sm">*</span>
@@ -360,7 +383,7 @@
                         {% if form.time_slot.errors %}<p class="field-error">{{ form.time_slot.errors.0 }}</p>{% endif %}
                     </div>
 
-                    <!-- 09 Reference -->
+                    <!-- 10 Reference -->
                     <div class="form-section">
                         <div class="flex items-baseline gap-2 mb-1">
                             <span class="text-red-500 font-bold text-sm">*</span>
@@ -475,7 +498,7 @@
         </div>
     </footer>
 
-    
+    <!-- TOAST -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
         <div id="toastContent" class="flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl text-white text-sm font-medium max-w-sm">
             <svg id="toastIcon" class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -486,7 +509,7 @@
     </div>
 
     <script>
-       
+        // ── MOBILE DRAWER ──────────────────────────────
         const drawerOpenBtn  = document.getElementById('mobile-menu-btn');
         const drawerCloseBtn = document.getElementById('drawer-close-btn');
         const drawer         = document.getElementById('mobile-drawer');
@@ -560,7 +583,7 @@
             submitBtn.disabled = true;
         });
 
-        
+        // ── RADIO HIGHLIGHTS ───────────────────────────
         document.querySelectorAll('.radio-group input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 const group = this.closest('.radio-group');
@@ -577,6 +600,7 @@
             if (label) { label.classList.add('text-yellow-600', 'font-semibold'); label.classList.remove('text-gray-700'); }
         });
 
+        // ── INPUT FOCUS GLOW ───────────────────────────
         document.querySelectorAll('input[type="text"], input[type="tel"], input[type="email"]').forEach(input => {
             input.addEventListener('focus', function() {
                 this.style.borderColor = '#c99b30';
