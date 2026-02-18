@@ -3,3 +3,5 @@ gunicorn
 pymupdf
 google-generativeai
 whitenoise>=6.5
+dj-database-url==2.1.0
+
