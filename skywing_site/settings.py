@@ -50,39 +50,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'skywing_site.wsgi.application'
 
-# # ============================================================
-# # DATABASE — Auto-detects SQLite (local) or PostgreSQL (production)
-# # ============================================================
-# if os.environ.get('DATABASE_URL'):
-#     # Production - PostgreSQL on Render
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             default=os.environ.get('DATABASE_URL'),
-#             conn_max_age=600,
-#             conn_health_checks=True,
-#         )
-#     }
-# else:
-#     # Local development - SQLite
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
 
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'skywing_db',
-        'USER': 'myuser',
-        'PASSWORD': 'sanah@5355',
-        'HOST': '86.99.16.104',
-        'PORT': '5432',
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'skywing_db',
+#         'USER': 'myuser',
+#         'PASSWORD': 'sanah@5355',
+#         'HOST': '86.99.16.104',
+#         'PORT': '5432',
+#     }
+# }
 
 
 
