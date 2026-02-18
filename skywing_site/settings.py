@@ -80,10 +80,11 @@ DATABASES = {
         'NAME': 'skywing_db',
         'USER': 'myuser',
         'PASSWORD': 'sanah@5355',
-        'HOST': ' 86.99.16.104',
+        'HOST': '86.99.16.104',
         'PORT': '5432',
     }
 }
+
 
 
 
